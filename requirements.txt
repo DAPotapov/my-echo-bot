@@ -1,0 +1,4 @@
+flask
+python-dotenv
+python-telegram-bot[webhooks]
+
