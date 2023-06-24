@@ -11,10 +11,15 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.WARNING
 )
 
+# Set Flask application
+app = Flask(__name__)
+
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     text = update.message.text
     await update.message.reply_text(text)
 
+
+@app.route("/", methods=["GET", "POST"])
 def main() -> None:
     load_dotenv()
     BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -28,6 +33,7 @@ def main() -> None:
         secret_token=BOT_TOKEN.split(':')[1],
         webhook_url='https://PDA.pythonanywhere.com:8443'
     )
+
 
 if __name__ == "__main__":
     main()
