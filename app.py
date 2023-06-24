@@ -32,7 +32,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 PORT = int(os.getenv("PORT")) # type: ignore
-application = Application.builder().token(BOT_TOKEN).updater(None).build()
+application = Application.builder().token(BOT_TOKEN).build()
 application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
 # application.run_polling()
 application.run_webhook(
